@@ -392,3 +392,67 @@ body{
   background: #fed7d7;
   color: #742a2a;
 }
+
+/* Code Section ----------------------------------------------- */
+.code-section {
+  padding: 4rem 0;
+  background: #1a202c;
+  color: white;
+}
+
+.code-section .section-title {
+  color: white;
+}
+
+.code-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  background: #2d3748;
+  color: #a0aec0;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #4a5568;
+  color: white;
+}
+
+.code-content {
+  background: #2d3748;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.code-tab {
+  display: none;
+}
+
+.code-tab.active {
+  display: block;
+}
+
+pre {
+  margin: 0;
+  padding: 2rem;
+  overflow-x: auto;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+code {
+  color: #e2e8f0;
+}

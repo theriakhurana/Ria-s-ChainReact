@@ -122,6 +122,220 @@
       </div>
       </div>
     </section>
+
+    <section id="code" class="code-section">
+      <div class="container">
+          <h2 class="section-title">Implementation Code</h2>
+          <div class="code-tabs">
+              <button class="tab-btn active">Node Class</button>
+              <button class="tab-btn">Insert Operations</button>
+              <button class="tab-btn">Delete Operations</button>
+              <button class="tab-btn">Search & Traverse</button>
+          </div>
+          
+          <div class="code-content">
+              <div class="code-tab active" id="tab-class">
+                  <pre><code class="javascript">
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
+    }
+};
+
+class LinkedList {
+private:
+    Node* head;
+    int length;
+
+public:
+    LinkedList() {
+        head = nullptr;
+        length = 0;
+    }
+
+    // Get the size of the list
+    int size() {
+        return length;
+    }
+
+    // Check if list is empty
+    bool isEmpty() {
+        return length == 0;
+    }
+};
+      </code></pre>
+      </div>
+  
+  <div class="code-tab" id="tab-insert">
+      <pre><code class="javascript">
+// Insert at the beginning
+void insertAtBeginning(int data) {
+    Node* newNode = new Node(data);
+    newNode->next = head;
+    head = newNode;
+    length++;
+}
+
+// Insert at the end
+void insertAtEnd(int data) {
+    Node* newNode = new Node(data);
+    if (!head) {
+        head = newNode;
+    } else {
+        Node* current = head;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+        current->next = newNode;
+    }
+    length++;
+}
+
+// Insert at specific position
+void insertAtPosition(int data, int position) {
+    if (position < 0 || position > length) {
+        throw std::out_of_range("Invalid position");
+    }
+
+    if (position == 0) {
+        insertAtBeginning(data);
+        return;
+    }
+
+    ListNode* newNode = new ListNode(data);
+    ListNode* current = head;
+    for (int i = 0; i < position - 1; ++i) {
+        current = current->next;
+    }
+
+    newNode->next = current->next;
+    current->next = newNode;
+    length++;
+}
+    </code></pre>
+    </div>
+                    
+          <div class="code-tab" id="tab-delete">
+              <pre><code class="javascript">
+// Delete by value
+bool deleteByValue(int data) {
+    if (!head) return false;
+
+    // Delete head
+    if (head->data == data) {
+        Node* toDelete = head;
+        head = head->next;
+        delete toDelete;
+        length--;
+        return true;
+    }
+
+    Node* current = head;
+    while (current->next && current->next->data != data) {
+        current = current->next;
+    }
+
+    if (current->next) {
+        Node* toDelete = current->next;
+        current->next = current->next->next;
+        delete toDelete;
+        length--;
+        return true;
+    }
+
+    return false;
+}
+
+// Delete at position
+void deleteAtPosition(int position) {
+    if (position < 0 || position >= length) {
+        cout << "Invalid position";
+        return;
+    }
+
+    if (position == 0) {
+        Node* toDelete = head;
+        head = head->next;
+        delete toDelete;
+        length--;
+        return;
+    }
+
+    Node* current = head;
+    for (int i = 0; i < position - 1; i++) {
+        current = current->next;
+    }
+
+    Node* toDelete = current->next;
+    current->next = current->next->next;
+    delete toDelete;
+    length--;
+}
+      </code></pre>
+      </div>
+                    
+      <div class="code-tab" id="tab-search">
+        <pre><code class="javascript">
+// Search for a value
+int search(int data) {
+    Node* current = head;
+    int position = 0;
+
+    while (current) {
+        if (current->data == data) {
+            return position;
+        }
+        current = current->next;
+        position++;
+    }
+
+    return -1;
+}
+
+// Get value at position
+int getAt(int position) {
+    if (position < 0 || position >= length) {
+        cout << "Invalid position";
+        return -1;
+    }
+
+    Node* current = head;
+    for (int i = 0; i < position; i++) {
+        current = current->next;
+    }
+
+    return current->data;
+}
+
+// Convert to array for display
+vector<int> toArray() {
+    vector<int> result;
+    Node* current = head;
+
+    while (current) {
+        result.push_back(current->data);
+        current = current->next;
+    }
+
+    return result;
+}
+            </code></pre>
+            </div>
+          </div>
+        </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Ria's ChainReact - Linked List Visualizer</p>
+        </div>
+    </footer>
    </main>
 
 </body>
