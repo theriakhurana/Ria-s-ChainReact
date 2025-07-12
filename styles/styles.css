@@ -317,6 +317,96 @@ body{
   margin-bottom: 0.5rem;
 }
 
+/* Node ----------------------------------------------- */
+
+.node {
+  background: white;
+  border: 3px solid  #d63f92;
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 80px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: nodeAppear 0.5s ease;
+  transition: all 0.3s ease;
+}
+
+.node:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.node.highlight {
+  border-color: #e53e3e;
+  background: #fed7d7;
+  animation: pulse 1s infinite;
+}
+
+.node.found {
+  border-color: #38a169;
+  background: #c6f6d5;
+}
+
+@keyframes nodeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.node-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.node-label {
+  font-size: 0.8rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.arrow {
+  color: #d63f92;
+  font-size: 1.5rem;
+  animation: arrowPulse 2s infinite;
+}
+
+@keyframes arrowPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.null-pointer {
+  color: #a0aec0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+
+
 /* Info Panel ----------------------------------------------------*/
 .info-panel {
   display: grid;
