@@ -348,3 +348,52 @@ function showTab(tabName){
   // activate button
   event.target.classList.add('active'); 
 }
+
+// Smooth scroll for nav links
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", function (e){
+    e.preventDefault();
+    const targetID = this.getAttribute("href");
+    const targetElement = document.querySelector(targetID);
+    if(targetElement){
+      targetElement.scrollIntoView({
+        behaviour: "smooth",
+        block: "start",
+      })
+    }
+  })
+})
+
+// Input validation
+nodeValueInput.addEventListener("input", function(){
+  const value = Number.parseInt(this.value);
+  if (value < 0 || value > 999) {
+    this.style.borderColor = "#e53e3e";
+  } else{
+    this.style.borderColor = "#e2e8f0";
+  }
+})
+
+nodePositionInput.addEventListener("input", function(){
+  const position = Number.parseInt(this.value)
+  if (position < 0 || position > linkedlist.getLength()) {
+    this.style.borderColor = "#e53e3e";
+  } else {
+    this.style.borderColor = "#e2e8f0"
+  }
+})
+
+
+// on load
+document.addEventListener("DOMContentLoaded", () => {
+  visualizeList();
+
+  // sample data
+  setTimeout(()=>{
+    linkedlist.insertAtEnd(10);
+    linkedlist.insertAtEnd(20);
+    linkedlist.insertAtEnd(30);
+    visualizeList();
+    showResult("Sample data loaded", "success");
+  }, 1000);
+})

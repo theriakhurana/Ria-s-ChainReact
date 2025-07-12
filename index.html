@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-</head>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </head>
 <body>
   <!-- Header Section -->
   <header class="header">
@@ -28,7 +29,7 @@
   <!-- Main Content -->
    <main class="main">
     <section id="about" class="intro-section">
-      <div class="container">
+      <div class="container" data-aos="fade-up">
         <div class="intro-content">
           <h2 class="section-title">Understand Singly Linked List with Ria</h2>
           <p class="intro-text">
@@ -59,7 +60,7 @@
     </section>
 
     <!-- Visualization -->
-    <section id="visualizer" class="visualizer-section">
+    <section id="visualizer" class="visualizer-section" data-aos="fade-up">
       <div class="container">
         <h2 class="section-title">Interactive Visualizer</h2>
 
@@ -84,7 +85,7 @@
           </div>
         </div>
 
-        <div class="visualization-area">
+        <div class="visualization-area" data-aos="fade-up">
             <div class="list-container" id="listContainer">
                 <div class="empty-state" id="emptyState">
                     <i class="fas fa-link"></i>
@@ -95,7 +96,7 @@
         </div>
 
         <div class="info-panel">
-          <div class="info-card">
+          <div class="info-card" data-aos="fade-up">
               <h4>List Statistics</h4>
               <div class="stats">
                   <div class="stat">
@@ -113,7 +114,7 @@
               </div>
           </div>
           
-          <div class="info-card">
+          <div class="info-card" data-aos="fade-up">
               <h4>Operation Result</h4>
               <div class="operation-result" id="operationResult">
                   Ready for operations
@@ -123,7 +124,7 @@
       </div>
     </section>
 
-    <section id="code" class="code-section">
+    <section id="code" class="code-section" data-aos="zoom-in">
       <div class="container">
           <h2 class="section-title">Implementation Code</h2>
           <div class="code-tabs">
@@ -337,6 +338,16 @@ vector<int> toArray() {
         </div>
     </footer>
    </main>
+
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script>
+    AOS.init({
+      offset: 200,
+      duration: 1400,
+      easing: 'ease',
+      delay:0,
+    });
+  </script>
    <script src="scripts/script.js"></script>
 
 </body>
