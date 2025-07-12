@@ -332,3 +332,19 @@ function clearList(){
   showResult("List cleared successfully", "success");
   clearInputs();
 } 
+
+
+// Code section functions
+function showTab(tabName){
+  //hide all tabs
+  document.querySelectorAll('.code-tab').forEach(tab => tab.classList.remove("active"));
+
+  //remove active class from tab buttons
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove("active"));
+
+  // show
+  document.getElementById(`tab-${tabName}`).classList.add('active');
+
+  // activate button
+  event.target.classList.add('active'); 
+}
