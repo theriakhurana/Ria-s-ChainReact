@@ -135,3 +135,39 @@ class LinkedList{
   }
 }
 
+// -----------------------------------------------
+const linkedlist = new LinkedList();
+
+const listContainer = document.getElementById('listContainer');
+const emptyState = document.getElementById('emptyState');
+const nodeValueInput = document.getElementById('nodeValue');
+const nodePositionInput = document.getElementById('nodePosition');
+const listLength = document.getElementById('listLength');
+const headValue = document.getElementById('headValue');
+const tailValue = document.getElementById('tailValue');
+const operationResult = document.getElementById('operationResult');
+
+// -------------------------------------------
+
+function getInputValue(){
+  const val = Number.parseInt(nodeValueInput.value);
+  if(isNaN(val)) throw new Error("Invalid input value");
+  return val;
+}
+
+function getPositionValue(){
+  const pos = Number.parseInt(nodePositionInput.value);
+  if(isNaN(pos) || pos < 0) throw new Error("Invalid position value");
+  return pos;
+}
+
+function clearInputs(){
+  nodeValueInput.value = '';
+  nodePositionInput.value = '';
+}
+
+function updateStatus(){
+  listLength.textContent = linkedlist.getLength();
+  headValue.textContent = linkedlist.getHead() !== null ? linkedlist.getHead() : 'null';
+  tailValue.testContent - linkedlist.getTail() !== null? linkedlist.getTail() : 'null';
+}
