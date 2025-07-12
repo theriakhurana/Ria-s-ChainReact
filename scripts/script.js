@@ -171,3 +171,164 @@ function updateStatus(){
   headValue.textContent = linkedlist.getHead() !== null ? linkedlist.getHead() : 'null';
   tailValue.testContent - linkedlist.getTail() !== null? linkedlist.getTail() : 'null';
 }
+
+function showResult(msg, type="info"){
+  operationResult.textContent = msg;
+  operationResult.className = `operation-result ${type}`;
+
+  // clear after 4 seconds
+  setTimeout(() => {
+    operationResult.textContent = "Ready for operations";
+    operationResult.className = "operation-result";
+  }, 4000);
+}
+
+function createNode(value, index, isHighlighted = false, isFound = false){
+  const nodeDiv = document.createElement('div');
+  nodeDiv.className = `node ${isHighlighted ? "highlight" : ""} ${isFound ? "found" : ""}`
+
+  nodeDiv.innerHTML = 
+  `
+    <div class="node-value">${value}</div>
+    <div class="node-label">${index === 0 ? "Head" : `Node ${index}`}</div>
+
+  `;
+  return nodeDiv;
+}
+
+function createArrow(){
+  const arrowDiv = document.createElement('div');
+  arrowDiv.className = "arrow";
+  arrowDiv.innerHTML = '<i class="fas fa-arrow-right"></i>';
+  return arrowDiv;
+}
+
+function createNullElement(){
+  const nullDiv = document.createElement('div');
+  nullDiv.className = "null-pointer";
+  nullDiv.textContent = "NULL";
+  return nullDiv;
+}
+
+function visualizeList(highlightedIndex = -1, foundIndex = -1){
+  // empty container
+  listContainer.innerHTML = '';
+
+  if(linkedlist.isEmpty()){
+    listContainer.appendChild(emptyState);
+    updateStatus();
+    return;
+  }
+
+  const values = linkedlist.toArray();
+
+  values.forEach((value, index) => {
+    const isHighlighted = index === highlightedIndex;
+    const isFound = index === foundIndex;
+
+    // create node
+    const node = createNode(value, index, isHighlighted, isFound);
+    listContainer.appendChild(node);
+
+    // add arrow (not on last node)
+    if(index < values.length - 1){
+      listContainer.appendChild(createArrow());
+    }
+  })
+
+  // null at the end
+  listContainer.appendChild(createArrow());
+  listContainer.appendChild(createNullElement());
+
+  updateStatus();
+}
+
+// operations
+
+function insertAtBeginning(){
+  try{
+    const value = getInputValue();
+    linkedlist.insertAtBeginning(value);
+    visualizeList(0); // highlight the new head
+    showResult(`Inserted ${value} at the beginning`, "success");
+
+    clearInputs();
+
+  } catch(error) {
+    showResult(error.message, "error");
+  }
+}
+
+function insertAtEnd(){
+  try{
+    const value = getInputValue();
+    const oldLen = linkedlist.size();
+    linkedlist.insertAtEnd(value);
+    visualizeList(oldLen); // highlight the new tail
+    showResult(`Inserted ${value} at the end`, "success");
+
+    clearInputs();
+
+  } catch (error) {
+    showResult(error.message, "error");
+  }
+}
+
+function insertAtPosition(){
+  try{
+    const value = getInputValue();
+    const position = getPositionValue();
+    linkedlist.insertAtPosition(value, position);
+    visualizeList(position);
+    showResult(`Inserted ${value} at position ${position}`, "success");
+
+    clearInputs();
+
+  } catch (error) {
+    showResult(error.message, "error");
+  }
+}
+
+function deleteByValue(){
+  try{
+    const value = getInputValue();
+    const deleted = linkedlist.deleteByValue(value);
+    if(deleted) {
+      visualizeList();
+      showResult(`Deleted ${value}`, "success");
+    } else{
+      showResult(`Value ${value} not found in the list`, "error");
+    }
+
+    clearInputs();
+
+  } catch(error){
+    showResult(error.message, "error");
+  }
+}
+
+function searchValue(){
+  try{
+    const value = getInputValue();
+    const position = linkedlist.search(value);
+    if(position !== -1){
+      visualizeList(-1, position); // highlight found node
+      showResult(`Found ${value} at position ${position}`, "success");
+    } else{
+      visualizeList();
+      showResult(`Value ${value} not found in the list`, "error");
+    }
+
+    clearInputs();
+
+  } catch(error){
+    showResult(error.message, "error");
+  }
+}
+
+function clearList(){
+  linkedlist.clear();
+  visualizeList();
+  showResult("List cleared successfully", "success");
+  clearInputs();
+} 
