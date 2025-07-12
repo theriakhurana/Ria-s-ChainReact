@@ -52,8 +52,8 @@ class LinkedList{
       temp = temp.next;
     }
 
-    temp.next = newNode;
     newNode.next = temp.next;
+    temp.next = newNode;
     this.length++;
   }
 
@@ -169,7 +169,7 @@ function clearInputs(){
 function updateStatus(){
   listLength.textContent = linkedlist.getLength();
   headValue.textContent = linkedlist.getHead() !== null ? linkedlist.getHead() : 'null';
-  tailValue.testContent - linkedlist.getTail() !== null? linkedlist.getTail() : 'null';
+  tailValue.textContent = linkedlist.getTail() !== null? linkedlist.getTail() : 'null';
 }
 
 function showResult(msg, type="info"){
@@ -262,7 +262,7 @@ function insertAtBeginning(){
 function insertAtEnd(){
   try{
     const value = getInputValue();
-    const oldLen = linkedlist.size();
+    const oldLen = linkedlist.getLength();
     linkedlist.insertAtEnd(value);
     visualizeList(oldLen); // highlight the new tail
     showResult(`Inserted ${value} at the end`, "success");
@@ -279,7 +279,7 @@ function insertAtPosition(){
     const value = getInputValue();
     const position = getPositionValue();
     linkedlist.insertAtPosition(value, position);
-    visualizeList(position);
+    visualizeList(position); // highlight it
     showResult(`Inserted ${value} at position ${position}`, "success");
 
     clearInputs();

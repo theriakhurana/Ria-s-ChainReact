@@ -75,12 +75,12 @@
           </div>
 
           <div class="buttons">
-            <button class="btn btn-primary">Insert Head</button>
-            <button class="btn btn-primary">Insert Tail</button>
-            <button class="btn btn-secondary">Insert At Position</button>
-            <button class="btn btn-danger">Delete Value</button>
-            <button class="btn btn-warning">Search</button>
-            <button class="btn btn-info">Clear All</button>
+            <button class="btn btn-primary" onclick="insertAtBeginning()">Insert Head</button>
+            <button class="btn btn-primary" onclick="insertAtEnd()">Insert Tail</button>
+            <button class="btn btn-secondary" onclick="insertAtPosition()">Insert At Position</button>
+            <button class="btn btn-danger" onclick="deleteByValue()">Delete Value</button>
+            <button class="btn btn-warning" onclick="searchValue()">Search</button>
+            <button class="btn btn-info" onclick="clearList()">Clear All</button>
           </div>
         </div>
 
@@ -337,6 +337,7 @@ vector<int> toArray() {
         </div>
     </footer>
    </main>
+   <script src="scripts/script.js"></script>
 
 </body>
 </html>
