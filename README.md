@@ -1,8 +1,8 @@
-<h1 align="center">🔗 Ria’s ChainReact</h1>
+<h1>🔗 Ria’s ChainReact</h1>
 
-<p align="center"><em>Interactive Linked List Visualizer & Learning Tool</em></p>
+<p><em>Interactive Linked List Visualizer & Learning Tool</em></p>
 
-<p align="center">⚡ Learn • 🛠️ Practice • 🔍 Debug — All in One Place</p>
+<p>⚡ Learn • 🛠️ Practice • 🔍 Debug — All in One Place</p>
 
 <hr>
 
@@ -39,11 +39,6 @@
   <li>Great for students learning DSA fundamentals.</li>
   <li>Useful for developers debugging linked list logic visually.</li>
 </ul>
-
-<hr>
-
-<h2>📷 Preview</h2>
-<p><em>Add a GIF or screenshot to showcase how it works:</em></p>
 
 <hr>
 
